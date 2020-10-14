@@ -1,25 +1,41 @@
-import React from 'react';
-import logo from '../../assets/logo.svg';
-import './Home.css';
+import React from "react";
+import { Jumbotron } from "react-bootstrap";
+import "./Home.css";
 
 function Home() {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                </a>
-            </header>
-        </div>
-    );
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Jumbotron>
+          <a href="/donate">
+            <h1 align="left">Donate</h1>
+          </a>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </Jumbotron>
+        <Jumbotron>
+          <a href="/order">
+            <h1 align="left">Place order</h1>
+          </a>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </Jumbotron>
+        <Jumbotron>
+          <a href="/profile">
+            <h1 align="left">View my Profile</h1>
+          </a>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </Jumbotron>
+      </header>
+    </div>
+  );
 }
 
 export default Home;

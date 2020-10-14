@@ -9,7 +9,7 @@ const Header = () => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <NavDropdown title="I am a" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="donor">Donor</NavDropdown.Item>
+            <NavDropdown.Item href="donate">Donor</NavDropdown.Item>
             <NavDropdown.Item href="beneficiary">Beneficiary</NavDropdown.Item>
             <NavDropdown.Item href="worker">
               Worker at foodbank
