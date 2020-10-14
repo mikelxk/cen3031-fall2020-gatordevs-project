@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, ButtonGroup, ButtonToolbar } from "react-bootstrap";
 import "../Home/Home.css";
 function Login() {
   const [email, setEmail] = useState("");
@@ -35,9 +35,6 @@ function Login() {
               }}
             />
           </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
           <Button
             variant="primary"
             type="submit"
@@ -48,9 +45,22 @@ function Login() {
               }
             }}
           >
-            Submit
+            Login
           </Button>
         </Form>
+        <hr color="white"></hr>
+        <h3>New Users</h3>
+        <ButtonToolbar aria-label="Toolbar with button groups">
+          <ButtonGroup className="mr-2" aria-label="First group">
+            <Button href="/donor">I'm a Donor</Button>
+          </ButtonGroup>
+          <ButtonGroup className="mr-2" aria-label="Second group">
+            <Button href="/beneficiary">I'm a Beneficiary</Button>
+          </ButtonGroup>
+          <ButtonGroup aria-label="Third group">
+            <Button href="/worker">I work at a Foodbank</Button>
+          </ButtonGroup>
+        </ButtonToolbar>
       </header>
     </div>
   );
