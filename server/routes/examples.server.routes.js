@@ -1,8 +1,8 @@
-const examples = require('../controllers/examples.server.controller.js'),
-    express = require('express'), 
-    router = express.Router()
+import { hello } from "../controllers/examples.server.controller.js"
+import express from "express";
+const router = express.Router();
 
 router.route('/')
-  .get(examples.hello);
+  .get(hello);
   
-module.exports = router;
+export const exampleRouter = router;
