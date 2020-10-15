@@ -19,7 +19,7 @@ const Header = () => {
         </Nav>
         <Nav>
           <Nav.Link href="/login">Sign In</Nav.Link>
-          <Nav.Link eventKey={2} href="#signup">
+          <Nav.Link eventKey={2} href="signup">
             Sign Up
           </Nav.Link>
         </Nav>

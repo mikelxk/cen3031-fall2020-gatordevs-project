@@ -4,7 +4,7 @@ import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
 import NotFound from "./views/NotFound";
 import Header from "./components/Header/Header";
-
+import SignUp from "./views/SignUp/SignUP";
 const App = () => {
   return (
     <div>
@@ -14,8 +14,9 @@ const App = () => {
         <Route exact path="/Home">
           <Redirect to="/" />
         </Route>
-        <Route path = "/login" component = {Login}/>
-        <Route component={NotFound}/>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
+        <Route component={NotFound} />
       </Switch>
     </div>
   );
