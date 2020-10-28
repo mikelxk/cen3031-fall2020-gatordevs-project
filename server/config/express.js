@@ -2,7 +2,7 @@ import { join } from 'path';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 import { json } from 'body-parser';
-import { exampleRouter } from '../routes/examples.server.routes.js';
+import {userRouter} from "../routes/userRoute.js"
 import express from "express";
 import { db } from "./config.js";
 export function init() {
@@ -27,7 +27,7 @@ export function init() {
     app.use(json());
 
     // add a router
-    app.use('/api/example', exampleRouter);
+    app.use('/api/users', userRouter);
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files

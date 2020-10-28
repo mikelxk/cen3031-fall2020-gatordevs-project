@@ -6,6 +6,7 @@ import Login from "./views/Login/Login";
 import NotFound from "./views/NotFound";
 import Header from "./components/Header/Header";
 import SignUp from "./views/SignUp/SignUP";
+import Dashboard from "./views/Dashboard/Dashboard"
 const App = () => {
   const [currentUser, setCurrentUser] = useState(httpUser.getCurrentUser());
 
@@ -29,10 +30,10 @@ const App = () => {
           }} />
           {/* <Route path="/logout" render={(props) => {
               return <LogOut onLogOut={logOut} />
-          }}/>
+          }}/> */}
           <Route path="/dashboard" render={() => {
               return currentUser ? <Dashboard /> : <Redirect to="/login" />
-          }}/> */}
+          }}/>
 
         <Route exact path="/Home" render={Home} />
         <Route exact path="/">

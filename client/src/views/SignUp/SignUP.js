@@ -1,39 +1,30 @@
 import React, { useState } from "react";
 import httpUser from "../../httpUser";
 import { Form, Button } from "react-bootstrap";
-import { propTypes } from "react-bootstrap/esm/Image";
 export default function SignUp(props) {
-  const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
-  const [name, setName] = useState("");
-  const getUser = () => {
-    return { email: { email }, pwd: { pwd } };
-  };
-  //TO DO: resolve form
+  const [fields, setFields] = useState({ name: "", email: "", password: "" });
   return (
     <div className="App">
       <header className="App-header">
         <Form>
-        <Form.Group controlId="formBasicName">
+          <Form.Group controlId="formBasicName">
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="name"
+              name="name"
+              onChange={(c) => setFields({ ...fields, name: c.target.value })}
               placeholder="name"
               size="lg"
-              onChange={(c) => {
-                setName(c.target.value);
-              }}
             />
           </Form.Group>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
+              name="email"
               placeholder="Enter email"
+              onChange={(c) => setFields({ ...fields, email: c.target.value })}
               size="lg"
-              onChange={(c) => {
-                setEmail(c.target.value);
-              }}
             />
             <Form.Text className="text-muted">
               <small>We'll never share your email with anyone else.</small>
@@ -44,18 +35,20 @@ export default function SignUp(props) {
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
+              name="password"
               placeholder="Password"
               size="lg"
-              onChange={(c) => {
-                setPwd(c.target.value);
-              }}
+              onChange={(c) =>
+                setFields({ ...fields, password: c.target.value })
+              }
             />
           </Form.Group>
           <Button
             variant="primary"
             type="submit"
             onClick={() => {
-              const user = httpUser.SignUp(getUser());
+              const user = httpUser.signUp(fields);
+              setFields({ name: "", email: "", password: "" });
               if (user) {
                 props.onSignUpSuccess(user);
                 props.history.push("/");
