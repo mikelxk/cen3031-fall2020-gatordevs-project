@@ -37,12 +37,6 @@ export default function SignUp() {
           <Button
             variant="primary"
             type="submit"
-            onClick={(c) => {
-              if (!c.isDefaultPrevented) {
-                //To do: pass info to backend
-                console.log([email, pwd]);
-              }
-            }}
           >
             Sign Up
           </Button>

@@ -4,3 +4,4 @@
 export const db = {
   uri: "", //place the URI of your mongo database here.
 };
+export const secret = ""; //whatever your secret is
