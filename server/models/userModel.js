@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 userSchema.methods.generateHash = function (password) {
-  return bcpyrt.hashSync(password, bcpyrt.genSaltSync);
+  return bcpyrt.hashSync(password, bcpyrt.genSaltSync());
 };
 userSchema.methods.validPassword = function (password) {
   return bcpyrt.compare(password, this.password);
