@@ -11,7 +11,11 @@ import { verifyToken } from "../functions/auth.js";
 const userRouter = new express.Router();
 userRouter.route("/").get(index).post(create);
 userRouter.post("/login", autheticate);
-userRouter.post("/signup", create);
+userRouter.post("/api/users",create);
 userRouter.use(verifyToken);
-userRouter.route("/:id").get(show).patch(update).delete(destory);
+userRouter
+  .route("/:id")
+  .get(show)
+  .patch(update)
+  .delete(destory);
 export { userRouter };

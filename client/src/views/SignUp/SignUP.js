@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import httpUser from "../../httpUser";
 import { Form, Button } from "react-bootstrap";
-export default function SignUp() {
+import { propTypes } from "react-bootstrap/esm/Image";
+export default function SignUp(props) {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+  const getUser = () => {
+    return { email: { email }, pwd: { pwd } };
+  };
   //TO DO: resolve form
   return (
     <div className="App">
@@ -37,6 +42,12 @@ export default function SignUp() {
           <Button
             variant="primary"
             type="submit"
+            onClick={() => {
+              const user = httpUser.SignUp(getUser());
+              if (user) {
+                props.history.push("/");
+              }
+            }}
           >
             Sign Up
           </Button>
