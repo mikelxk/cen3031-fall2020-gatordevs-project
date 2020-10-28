@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import httpUser from "./httpUser.js";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
@@ -6,17 +7,38 @@ import NotFound from "./views/NotFound";
 import Header from "./components/Header/Header";
 import SignUp from "./views/SignUp/SignUP";
 const App = () => {
+  const [currentUser, setCurrentUser] = useState(httpUser.getCurrentUser());
+
+  const onLoginSuccess = () => {
+    setCurrentUser(httpUser.getCurrentUser());
+  };
+
+  const logOut = () => {
+    httpUser.logOut();
+    setCurrentUser(null);
+  };
   return (
     <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/Home">
-          <Redirect to="/" />
+      <Header></Header>
+    <Switch>
+          <Route path="/login" render={(props) => {
+              return <Login {...props} onLoginSuccess={onLoginSuccess} />
+          }} />
+          <Route path="/signup" render={(props) => {
+              return <SignUp {...props} onSignUpSuccess={onLoginSuccess} />
+          }} />
+          {/* <Route path="/logout" render={(props) => {
+              return <LogOut onLogOut={logOut} />
+          }}/>
+          <Route path="/dashboard" render={() => {
+              return currentUser ? <Dashboard /> : <Redirect to="/login" />
+          }}/> */}
+
+        <Route exact path="/Home" render={Home} />
+        <Route exact path="/">
+          <Redirect to="/Home" />
         </Route>
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
-        <Route component={NotFound} />
+        <Route render={NotFound}/>
       </Switch>
     </div>
   );

@@ -5,6 +5,7 @@ import { propTypes } from "react-bootstrap/esm/Image";
 export default function SignUp(props) {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+  const [name, setName] = useState("");
   const getUser = () => {
     return { email: { email }, pwd: { pwd } };
   };
@@ -13,6 +14,17 @@ export default function SignUp(props) {
     <div className="App">
       <header className="App-header">
         <Form>
+        <Form.Group controlId="formBasicName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="name"
+              placeholder="name"
+              size="lg"
+              onChange={(c) => {
+                setName(c.target.value);
+              }}
+            />
+          </Form.Group>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -45,6 +57,7 @@ export default function SignUp(props) {
             onClick={() => {
               const user = httpUser.SignUp(getUser());
               if (user) {
+                props.onSignUpSuccess(user);
                 props.history.push("/");
               }
             }}
