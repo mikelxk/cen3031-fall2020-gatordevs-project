@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, Button, ButtonGroup, ButtonToolbar } from "react-bootstrap";
+import httpUser from "../../httpUser";
 import "../Home/Home.css";
-function Login() {
-  const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
+function Login(props) {
+  const [fields, setFields] = useState({ email: "", password: "" });
   //TO DO: resolve form
   return (
     <div className="App">
@@ -16,7 +16,7 @@ function Login() {
               placeholder="Enter email"
               size="lg"
               onChange={(c) => {
-                setEmail(c.target.value);
+                setFields({ ...fields, email: c.target.value });
               }}
             />
             <Form.Text className="text-muted">
@@ -31,17 +31,20 @@ function Login() {
               placeholder="Password"
               size="lg"
               onChange={(c) => {
-                setPwd(c.target.value);
+                setFields({ ...fields, password: c.target.value });
               }}
             />
           </Form.Group>
           <Button
             variant="primary"
             type="submit"
-            onClick={(c) => {
-              if (!c.isDefaultPrevented) {
-                //To do: pass info to backend
-                console.log([email, pwd]);
+            onClick={async (c) => {
+              c.preventDefault();
+              const user = await httpUser.logIn(fields);
+              setFields({ email: "", password: "" });
+              if (user) {
+                props.onLoginSuccess(user);
+                props.history.push("/");
               }
             }}
           >

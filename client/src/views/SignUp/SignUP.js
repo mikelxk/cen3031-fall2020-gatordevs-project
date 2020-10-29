@@ -46,8 +46,9 @@ export default function SignUp(props) {
           <Button
             variant="primary"
             type="submit"
-            onClick={() => {
-              const user = httpUser.signUp(fields);
+            onClick={async (c) => {
+              c.preventDefault();
+              const user = await httpUser.signUp(fields);
               setFields({ name: "", email: "", password: "" });
               if (user) {
                 props.onSignUpSuccess(user);

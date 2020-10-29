@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-const Header = () => {
+const Header = (props) => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="Home">Get Started</Navbar.Brand>
@@ -17,12 +17,19 @@ const Header = () => {
           </NavDropdown>
           <Nav.Link href="features">Features</Nav.Link>
         </Nav>
-        <Nav>
-          <Nav.Link href="/login">Sign In</Nav.Link>
-          <Nav.Link eventKey={2} href="signup">
-            Sign Up
-          </Nav.Link>
+        {props.currentUser ? (
+          <Nav>
+          <Nav.Link href="/dashboard">Profile</Nav.Link>
+          <Nav.Link href="/logout">Log out</Nav.Link>
         </Nav>
+        ):
+        (
+          <Nav>
+            <Nav.Link href="/login">Sign In</Nav.Link>
+            <Nav.Link href="/signup">Sign Up</Nav.Link>
+          </Nav>
+        )
+        }
       </Navbar.Collapse>
     </Navbar>
   );

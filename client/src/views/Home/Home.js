@@ -25,7 +25,7 @@ function Home() {
           </p>
         </Jumbotron>
         <Jumbotron>
-          <a href="/profile">
+          <a href="/dashboard">
             <h1 align="left">View my Profile</h1>
           </a>
           <p>
