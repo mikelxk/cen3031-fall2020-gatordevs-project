@@ -21,6 +21,7 @@ function verifyToken(req, res, next) {
         return res.json({ success: false, message: "Error with token" });
       }
       req.user = user;
+      next();
     });
   });
 }

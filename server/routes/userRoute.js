@@ -15,5 +15,4 @@ userRouter.post("/authenticate", authenticate);
 
 userRouter.use(verifyToken);
 userRouter.route("/:id").get(show).patch(update).delete(destroy);
-userRouter.route("/:id").get(show).patch(update).delete(destroy);
 export { userRouter };
