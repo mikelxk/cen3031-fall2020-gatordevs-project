@@ -54,6 +54,9 @@ export default function SignUp(props) {
                 props.onSignUpSuccess(user);
                 props.history.push("/");
               }
+              else {
+                alert("Sign up failed!");
+              }
             }}
           >
             Sign Up

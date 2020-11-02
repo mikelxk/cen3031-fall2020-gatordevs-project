@@ -46,6 +46,9 @@ function Login(props) {
                 props.onLoginSuccess(user);
                 props.history.push("/");
               }
+              else{
+                alert("username or passoword is wrong!");
+              }
             }}
           >
             Login

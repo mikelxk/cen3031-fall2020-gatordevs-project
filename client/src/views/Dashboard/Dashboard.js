@@ -149,11 +149,6 @@ const Dashboard = (props) => {
                       props.currentUser.password = field1;
                       let success = await httpUser.update(props.currentUser);
                       alert(`update password ${success ? `succeed` : `failed`}`);
-                      // if (!success) {
-                      //   alert("update email failed");
-                      // } else {
-                      //   alert("update email succeed");
-                      // }
                       handleClosePwd();
                     } else {
                       alert("two passwords don't match!");
