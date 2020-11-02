@@ -4,6 +4,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  address: { type: String },
 });
 userSchema.methods.generateHash = function (password) {
   return bcpyrt.hashSync(password, bcpyrt.genSaltSync());
