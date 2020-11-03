@@ -4,7 +4,8 @@ import httpUser from "../../httpUser";
 import "../Home/Home.css";
 function Login(props) {
   const [fields, setFields] = useState({ email: "", password: "" });
-  //TO DO: resolve form
+  const fieldChange = (c) =>
+    setFields({ ...fields, [c.target.name]: c.target.value });
   return (
     <div className="App">
       <header className="App-header">
@@ -13,11 +14,10 @@ function Login(props) {
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
+              name="email"
               placeholder="Enter email"
               size="lg"
-              onChange={(c) => {
-                setFields({ ...fields, email: c.target.value });
-              }}
+              onChange={fieldChange}
             />
             <Form.Text className="text-muted">
               <small>We'll never share your email with anyone else.</small>
@@ -28,11 +28,10 @@ function Login(props) {
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
+              name="password"
               placeholder="Password"
               size="lg"
-              onChange={(c) => {
-                setFields({ ...fields, password: c.target.value });
-              }}
+              onChange={fieldChange}
             />
           </Form.Group>
           <Button
@@ -45,8 +44,7 @@ function Login(props) {
               if (user) {
                 props.onLoginSuccess(user);
                 props.history.push("/");
-              }
-              else{
+              } else {
                 alert("username or passoword is wrong!");
               }
             }}

@@ -3,6 +3,8 @@ import httpUser from "../../httpUser";
 import { Form, Button } from "react-bootstrap";
 export default function SignUp(props) {
   const [fields, setFields] = useState({ name: "", email: "", password: "" });
+  const fieldChange = (c) =>
+    setFields({ ...fields, [c.target.name]: c.target.value });
   return (
     <div className="App">
       <header className="App-header">
@@ -12,7 +14,7 @@ export default function SignUp(props) {
             <Form.Control
               type="name"
               name="name"
-              onChange={(c) => setFields({ ...fields, name: c.target.value })}
+              onChange={fieldChange}
               placeholder="name"
               size="lg"
             />
@@ -23,7 +25,7 @@ export default function SignUp(props) {
               type="email"
               name="email"
               placeholder="Enter email"
-              onChange={(c) => setFields({ ...fields, email: c.target.value })}
+              onChange={fieldChange}
               size="lg"
             />
             <Form.Text className="text-muted">
@@ -38,9 +40,7 @@ export default function SignUp(props) {
               name="password"
               placeholder="Password"
               size="lg"
-              onChange={(c) =>
-                setFields({ ...fields, password: c.target.value })
-              }
+              onChange={fieldChange}
             />
           </Form.Group>
           <Button
@@ -53,8 +53,7 @@ export default function SignUp(props) {
               if (user) {
                 props.onSignUpSuccess(user);
                 props.history.push("/");
-              }
-              else {
+              } else {
                 alert("Sign up failed!");
               }
             }}

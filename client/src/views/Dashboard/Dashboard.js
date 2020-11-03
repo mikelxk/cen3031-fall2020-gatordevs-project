@@ -83,11 +83,9 @@ const Dashboard = (props) => {
                     if (field1 === field2) {
                       props.currentUser.email = field1;
                       let success = await httpUser.update(props.currentUser);
-                      if (success) {
-                        setEmail(props.currentUser.email);
-                      } else {
-                        alert("update email failed");
-                      }
+                      success
+                        ? setEmail(props.currentUser.email)
+                        : alert("update email failed");
                       handleCloseEmail();
                     } else {
                       alert("two emails don't match");
@@ -148,7 +146,9 @@ const Dashboard = (props) => {
                     if (field1 === field2) {
                       props.currentUser.password = field1;
                       let success = await httpUser.update(props.currentUser);
-                      alert(`update password ${success ? `succeed` : `failed`}`);
+                      alert(
+                        `update password ${success ? `succeed` : `failed`}`
+                      );
                       handleClosePwd();
                     } else {
                       alert("two passwords don't match!");
