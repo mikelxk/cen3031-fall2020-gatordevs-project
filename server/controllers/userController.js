@@ -24,7 +24,7 @@ async function create(req, res) {
     const token = signToken(user);
     res.json({ success: true, message: "User created with token", token });
   } catch (err) {
-    res.json({ success: false, code: err.code });
+    res.json({ success: false, code: err.message });
   }
 }
 async function update(req, res) {
@@ -34,7 +34,7 @@ async function update(req, res) {
     await user.save();
     res.json({ success: true, message: "User updated", user });
   } catch (err) {
-    res.json({ success: false, code: err.code });
+    res.json({ success: false, code: err.message });
   }
 }
 async function destroy(req, res) {
@@ -42,7 +42,7 @@ async function destroy(req, res) {
     const user = await User.findByIdAndRemove(req.params.id);
     res.json({ success: true, message: "User Deleted", user });
   } catch (err) {
-    res.json({ success: false, code: err.code });
+    res.json({ success: false, code: err.message });
   }
 }
 async function authenticate(req, res) {
