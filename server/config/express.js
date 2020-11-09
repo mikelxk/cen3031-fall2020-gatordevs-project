@@ -1,7 +1,6 @@
 import { join } from 'path';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
-import { json } from 'body-parser';
 import {userRouter} from "../routes/userRoute.js"
 import express from "express";
 import { db } from "./config.js";
@@ -24,7 +23,7 @@ export function init() {
     app.use(morgan('dev'));
 
     // body parsing middleware
-    app.use(json());
+    app.use(express.json());
 
     // add a router
     app.use('/api/users', userRouter);

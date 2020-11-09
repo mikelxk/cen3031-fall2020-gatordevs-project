@@ -19,7 +19,7 @@ httpUser.getCurrentUser = function () {
 
 httpUser.logIn = async function (credentials) {
   try {
-    const response = await axios.post("/api/users/authenticate", credentials);
+    const response = await axios.post("api/users/authenticate", credentials);
     const token = response.data.token;
     if (token) {
       this.defaults.headers.common.token = this.setToken(token);
@@ -34,7 +34,7 @@ httpUser.logIn = async function (credentials) {
 };
 
 httpUser.signUp = async function (userInfo) {
-  const response = await axios.post("/api/users", userInfo);
+  const response = await axios.post("api/users", userInfo);
 
   const token = response.data.token;
   if (token) {
@@ -47,7 +47,7 @@ httpUser.signUp = async function (userInfo) {
 
 httpUser.update = async function (userInfo) {
   userInfo.token = this.getToken();
-  const response = await axios.patch(`/api/users/${userInfo._id}`, userInfo);
+  const response = await axios.patch(`api/users/${userInfo._id}`, userInfo);
   return response.data.success;
 };
 httpUser.logOut = function () {
