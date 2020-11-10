@@ -3,13 +3,18 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 import {userRouter} from "../routes/userRoute.js"
 import express from "express";
-import { db } from "./config.js";
+async function getUri() {
+    return import("./config.js")
+        .then(config => config.db.uri)
+        .catch(() => process.env.DB_URI);
+}
+const uri = await getUri();
 export function init() {
     /* 
         connect to database
         - reference README for db uri
     */
-    mongoose.connect(process.env.DB_URI || db.uri, {
+    mongoose.connect(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
