@@ -3,9 +3,7 @@ import jwt from "jsonwebtoken";
 async function getSecret() {
   return import("../config/config.js")
     .then(config => config.secret)
-    .catch(() => {
-      process.env.secret;
-    });
+    .catch(process.env.secret);
 }
 const jwt_secret = await getSecret();
 function signToken(user) {
